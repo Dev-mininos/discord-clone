@@ -10,6 +10,7 @@ import { ServerSearch } from "./server-search";
 import { Hash, Mic, ShieldAlert, ShieldCheck, Video } from "lucide-react";
 import { Separator } from "../ui/separator";
 import { ServerSection } from "./server-section";
+import { ServerChannel } from "./server-channel";
 
 interface ServerSidebarProps {
   serverId: string;
@@ -123,6 +124,14 @@ const ServerSidebar: FC<ServerSidebarProps> = async ({ serverId }) => {
               role={role}
               label="Text channels"
             />
+            {textChannels.map((channel) => (
+              <ServerChannel
+                key={channel.id}
+                channel={channel}
+                role={role}
+                server={server}
+              />
+            ))}
           </div>
         )}
       </ScrollArea>
