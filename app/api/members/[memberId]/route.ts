@@ -5,7 +5,7 @@ import { db } from "@/lib/db";
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { memberId: string } }
+  { params }: { params: { memberId: string } },
 ) {
   try {
     const profile = await currentProfile();
@@ -66,7 +66,7 @@ export async function PATCH(
 }
 export async function DELETE(
   req: Request,
-  { params }: { params: { memberId: string } }
+  { params }: { params: { memberId: string } },
 ) {
   try {
     const profile = await currentProfile();

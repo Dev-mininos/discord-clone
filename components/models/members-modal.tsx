@@ -38,7 +38,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 const roleIconMap = {
   GUEST: null,
-  MODERATOR: <ShieldCheck className="h-4 w-4 ml-2 text-indigo-500" />,
+  MODERATOR: <ShieldCheck className="ml-2 h-4 w-4 text-indigo-500" />,
   ADMIN: <ShieldCheck className="h-4 w-4 text-rose-500" />,
 };
 export const MembersModal = () => {
@@ -85,9 +85,9 @@ export const MembersModal = () => {
   };
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
-      <DialogContent className="bg-white text-black  overflow-hidden">
-        <DialogHeader className="pt-8 px-6 ">
-          <DialogTitle className="text-3xl text-center font-bold">
+      <DialogContent className="overflow-hidden bg-white  text-black">
+        <DialogHeader className="px-6 pt-8 ">
+          <DialogTitle className="text-center text-3xl font-bold">
             Manage Members
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
@@ -96,10 +96,10 @@ export const MembersModal = () => {
         </DialogHeader>
         <ScrollArea className="mt-8 max-h-[420px] pr-6">
           {server?.members?.map((member) => (
-            <div key={member.id} className="flex items-center gap-x-2 mb-6">
+            <div key={member.id} className="mb-6 flex items-center gap-x-2">
               <UserAvatar src={member.profile.imageUrl} />
               <div className="flex flex-col gap-y-1">
-                <div className="text-xs font-semibold flex items-center gap-x-1">
+                <div className="flex items-center gap-x-1 text-xs font-semibold">
                   {member.profile.name}
                   {roleIconMap[member.role]}
                 </div>
@@ -114,7 +114,7 @@ export const MembersModal = () => {
                         <DropdownMenuContent side="left">
                           <DropdownMenuSub>
                             <DropdownMenuSubTrigger className="flex items-center">
-                              <ShieldQuestion className="w-4 h-4 mr-2" />
+                              <ShieldQuestion className="mr-2 h-4 w-4" />
                               <span>Role</span>
                             </DropdownMenuSubTrigger>
                             <DropdownMenuPortal>
@@ -124,10 +124,10 @@ export const MembersModal = () => {
                                     onRoleChange(member.id, "GUEST")
                                   }
                                 >
-                                  <Shield className="h-4 w-4 mr-2" />
+                                  <Shield className="mr-2 h-4 w-4" />
                                   Guest
                                   {member.role === "GUEST" && (
-                                    <Check className="h-4 w-4 ml-auto" />
+                                    <Check className="ml-auto h-4 w-4" />
                                   )}
                                 </DropdownMenuItem>
                                 <DropdownMenuItem
@@ -135,10 +135,10 @@ export const MembersModal = () => {
                                     onRoleChange(member.id, "MODERATOR")
                                   }
                                 >
-                                  <Shield className="h-4 w-4 mr-2" />
+                                  <Shield className="mr-2 h-4 w-4" />
                                   Moderator
                                   {member.role === "MODERATOR" && (
-                                    <ShieldCheck className="h-4 w-4 ml-auto" />
+                                    <ShieldCheck className="ml-auto h-4 w-4" />
                                   )}
                                 </DropdownMenuItem>
                               </DropdownMenuSubContent>
@@ -146,7 +146,7 @@ export const MembersModal = () => {
                           </DropdownMenuSub>
                           <DropdownMenuSeparator />
                           <DropdownMenuItem onClick={() => onKick(member.id)}>
-                            <Gavel className="h-4 w-4 mr-2" />
+                            <Gavel className="mr-2 h-4 w-4" />
                             Kick
                           </DropdownMenuItem>
                         </DropdownMenuContent>
@@ -155,7 +155,7 @@ export const MembersModal = () => {
                   </div>
                 )}
               {LoadingId === member.id && (
-                <Loader2 className="animate-spin text-zinc-500 ml-auto w-4 h-4" />
+                <Loader2 className="ml-auto h-4 w-4 animate-spin text-zinc-500" />
               )}
             </div>
           ))}
