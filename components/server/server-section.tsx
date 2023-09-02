@@ -31,14 +31,14 @@ export const ServerSection: FC<ServerSectionProps> = ({
         <ActionToolTip label="Create Channel" side="top">
           <button
             className="text-zinc-500 transition hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
-            onClick={() => onOpen("createChannel")}
+            onClick={() => onOpen("createChannel",{channelType})}
           >
             <Plus className="h-4 w-4 " />
           </button>
         </ActionToolTip>
       )}
       {role === MemberRole.ADMIN && sectionType === "members" && (
-        <ActionToolTip label="Create Channel" side="top">
+        <ActionToolTip label="Manage members" side="top">
           <button
             className="text-zinc-500 transition hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
             onClick={() => onOpen("members", { server })}
